@@ -1,0 +1,108 @@
+{
+  "margin": "0px 0px 0px 0px",
+  "layer": "top",
+  "modules-left": ["custom/distro", "hyprland/workspaces", "custom/music"],
+  "modules-center": ["clock"],
+  "modules-right": ["battery", "cpu", "memory", "pulseaudio", "custom/vpn", "network", "custom/powermenu"],
+  "custom/quote": {
+    "format": "\"Software is like sex; it's better when it's free\"",
+  },
+  "hyprland/workspaces": {
+    "active-only": "false",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "disable-scroll": "false",
+    "all-outputs": "true",
+    "format": "{icon}",
+    "on-click": "activate",
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    }
+  },
+  "tray": {
+    "spacing": 11
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": " {:%a %d  %H:%M}",
+    "format-alt": " {:%Y.%B.%A.%d  %H:%M}"
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": "false"
+  },
+  "memory": {
+    "format": " {}%"
+  },
+  "backlight": {
+    "format": "{icon}{percent}%",
+    "format-icons": ["󰃞 ", "󰃟 ", "󰃠 "],
+    "on-scroll-up": "light -A 1",
+    "on-scroll-down": "light -U 1"
+  },
+  "battery": {
+    "states": {
+      "warning": "30",
+      "critical": "15"
+    },
+    "format": "{icon}{capacity}%",
+    "format-alt": "{time} {icon}",
+    "tooltip-format": "{timeTo} {capacity}%",
+    "format-charging": "󱐋 {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": ["  ", "  ", "  ", "  ", "  "]
+  },
+  "custom/vpn": {
+    "exec": "if expressvpn status | grep -q 'Connected to'; then SERVER=$(expressvpn status | grep 'Connected to' | cut -d ' ' -f3- | sed 's/ - [0-9]*$//'); echo '{\"text\":\"\",\"class\":\"vpn-on\",\"tooltip\":\"'$SERVER'\"}'; else echo '{\"text\":\"\",\"class\":\"vpn-off\",\"tooltip\":\"Not connected\"}'; fi",
+    "interval": 5,
+    "return-type": "json"
+  },
+  "network": {
+    "format-wifi": "  {essid} {signalStrength}%",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
+    "format-linked": "{ifname} (No IP) 🌐",
+    "format-disconnected": "󰤮 Disconnected",
+    "on-click-release": "rofi-network-manager",
+    "tooltip-format": "{essid} {signalStrength}%"
+  },
+  "custom/music": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "waybar-module-music --format \"%artist% - %title%\" --marquee --title-width 25",
+  },
+  "pulseaudio": {
+    "format": "{icon}{volume}% {format_source}",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-bluetooth-muted": "   {volume}%",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-muted": "  {format_source}",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": [" ", " ", "  "]
+    },
+    "tooltip-format": "{desc} {volume}%",
+    "on-click-middle": "pavucontrol",
+    "on-click-release": "rofi-bluetooth",
+  },
+  "custom/distro": {
+    "format": " ",
+    "on-click": "rofi-menu",
+    "on-click-release": "rofi -show drun -show-icons"
+  },
+  "custom/powermenu": {
+    "format": " ",
+    "on-click": "powermenu",
+    "on-click-release": "rofi -show power-menu -modi \"power-menu:rofi-power-menu\""
+  }
+}
+

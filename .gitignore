@@ -1,0 +1,24 @@
+# Ignore everything
+*
+!.gitignore
+
+# Allow git to see directories
+!*/
+
+# Keep likely customized configs
+!fish/**
+!nvim/**
+!hypr/**
+!waybar/**
+!kitty/**
+!rofi/**
+!ttcp/**
+!btop/**
+!lazygit/**
+!ranger/**
+!dunst/**
+!gtk-3.0/**
+!mimeapps.list
+!user-dirs.dirs
+!user-dirs.locale
+!pavucontrol.ini

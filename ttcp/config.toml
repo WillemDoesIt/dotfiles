@@ -1,0 +1,3 @@
+[defaults]
+port = 50001
+message = "Hello from client"
