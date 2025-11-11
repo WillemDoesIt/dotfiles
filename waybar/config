@@ -3,7 +3,7 @@
   "layer": "top",
   "modules-left": ["custom/distro", "hyprland/workspaces", "custom/music"],
   "modules-center": ["clock"],
-  "modules-right": ["battery", "cpu", "memory", "pulseaudio", "custom/vpn", "network", "custom/powermenu"],
+  "modules-right": ["battery", "cpu", "custom/gpu", "memory", "pulseaudio", "custom/vpn", "network", "custom/powermenu"],
   "custom/quote": {
     "format": "\"Software is like sex; it's better when it's free\"",
   },
@@ -34,6 +34,10 @@
   "cpu": {
     "format": " {usage}%",
     "tooltip": "false"
+  },
+  "custom/gpu": {
+      "exec": "/usr/bin/waybar-gpu",
+      "interval": 10
   },
   "memory": {
     "format": " {}%"

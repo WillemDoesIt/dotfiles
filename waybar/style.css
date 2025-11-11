@@ -187,7 +187,8 @@ window#waybar>box {
     /* background-color: rgba(18, 21, 29, 0.98); */
     background-color: @background;
     /*border-radius: 8px;*/
-    border: 3px Solid #595959;
+    /*border: 3px Solid #595959;*/
+    border: 3px Solid #2d2d2d;
     padding: 2px;
     color: @foreground;
     margin: -3px -3px 0px -3px;
@@ -211,6 +212,7 @@ window#hyprland-window {
 #window,
 #custom-music,
 #cpu,
+#custom-gpu,
 #memory,
 #temperature,
 #custom-media,
@@ -267,6 +269,11 @@ window#hyprland-window {
 
 
 #cpu {
+    padding: 0 10px;
+    color: @alt_cyan;
+}
+
+#custom-gpu {
     padding: 0 10px;
     color: @alt_cyan;
 }
