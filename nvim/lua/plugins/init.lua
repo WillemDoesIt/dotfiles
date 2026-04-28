@@ -22,6 +22,53 @@ return {
   },
 
   {
+    'nvim-orgmode/orgmode',
+    event = 'VeryLazy',
+    ft = { 'org' },
+    config = function()
+      -- Setup orgmode
+      require('orgmode').setup({
+        org_hide_emphasis_markers = true,  -- hides * / _ markers
+        org_hide_leading_stars = true,     -- optional: hides outline stars unless cursor on line
+        org_hide_links = true,             -- hides [[link]] markup, keeps link text
+        org_agenda_files = {
+          '/home/willemvz/Documents/orgs/**/*.org',
+          '/home/willemvz/Programs/**/*.org',
+        },
+        org_default_notes_file = '/home/willemvz/Documents/refile.org',
+        org_agenda_skip_tags = { 'local' }, -- meaning you can add tag :local: to have a todo not add to agenda
+        org_todo_keywords = {'STARTED', 'WAITING', 'TODO', '|', 'DONE', 'CANCELLED'},
+      })
+
+      -- Experimental LSP support
+      vim.lsp.enable('org')
+      vim.opt.conceallevel = 2
+      vim.api.nvim_set_hl(0, "orgLink", { underline = true, fg = "#88c0d0" })
+    end,
+  },
+
+  {
+    "lukas-reineke/headlines.nvim",
+    ft = "org",
+    config = function()
+      require("headlines").setup({
+        org = {
+          fat_headlines = false,
+          headline_highlights = {
+            "Headline1", "Headline2", "Headline3",
+            "Headline4", "Headline5", "Headline6",
+          },
+        },
+      })
+
+      -- vim.cmd [[highlight Headline1 guibg=#1e2718]]
+      -- vim.cmd [[highlight Headline2 guibg=#21262d]]
+      -- vim.cmd [[highlight CodeBlock guibg=#1c1c1c]]
+      -- vim.cmd [[highlight Dash guibg=#D19A66 gui=bold]]
+    end,
+  },
+
+  {
     "mfussenegger/nvim-dap",
     lazy = false,
     dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio", "theHamsta/nvim-dap-virtual-text" },
